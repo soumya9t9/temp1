@@ -1,0 +1,21 @@
+<agm-map [latitude]="map.center.latitude" [longitude]="map.center.longitude" [zoom]="map.zoom" [zoomControl]="true"
+    [fullscreenControl]="true" [scrollwheel]="null">
+
+
+    <agm-marker #gm *ngFor="let m of markers" [iconUrl]="m.icon"
+        
+        [latitude]="m.latitude" [longitude]="m.longitude">
+
+        <agm-info-window [disableAutoPan]="false" #infoWindow>
+            <p style="font-size: 15px; color: #313e4d; display: inline;">
+                <strong>{{m.instituteName || "name"}}</strong>
+        </agm-info-window>
+
+    </agm-marker>
+
+    <!-- <agm-polygon *ngFor="let p of polygons" [paths]="p.path" [strokeColor]="p.stroke.color"
+        [strokeWeight]="p.stroke.wieght" [visible]="p.visible" [geodesic]="p.geodesic" [fillColor]="p.fill.color"
+        [fillOpacity]="p.fill.opacity">
+        {{p |json}}
+    </agm-polygon> -->
+</agm-map>

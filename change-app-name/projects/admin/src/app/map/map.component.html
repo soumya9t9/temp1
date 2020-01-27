@@ -1,0 +1,34 @@
+<div class="map" style="position: relative; width: 100%; height: 100%;">
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="4"
+    (mapClick)="addMarker($event.coords.lat, $event.coords.lng)" [zoomControl]="true" [fullscreenControl]="true"
+    [scrollwheel]="null">
+    <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [opacity]="marker.alpha"
+      [markerDraggable]="true" (markerClick)="selectMarker($event)">
+    </agm-marker>
+    <!-- <agm-rectangle [north]="max('lat')" [east]="max('lng')" [south]="min('lat')" [west]="min('lng')">
+  </agm-rectangle> -->
+  </agm-map>
+  <p *ngIf="selectedMarker">
+    Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
+  </p>
+
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false"
+    (mapClick)="mapClicked($event)">
+
+    <agm-marker-cluster [imagePath]="'https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m'">
+      <agm-marker *ngFor="let m of markers2; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat"
+        [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+
+        <agm-info-window>
+          <strong>InfoWindow content</strong>
+        </agm-info-window>
+
+      </agm-marker>
+    </agm-marker-cluster>
+    <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+      [editable]="true">
+    </agm-circle>
+
+  </agm-map>
+</div>
