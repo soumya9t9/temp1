@@ -1,22 +1,5 @@
 <div class="map" style="position: relative; width: 100%; height: 100%;">
 
-  <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom"
-    (mapClick)="addMarker($event.coords.lat, $event.coords.lng)" [zoomControl]="true" [fullscreenControl]="true"
-    [scrollwheel]="null">
-    <agm-marker-cluster
-      [imagePath]="'https://raw.githubusercontent.com/googlemaps/v3-utility-library/master/markerclusterer/images/m'">
-
-      <agm-marker *ngFor="let marker of markers; let i = index" [latitude]="marker.lat" [longitude]="marker.lng"
-        [opacity]="marker.alpha" [markerDraggable]="true" (markerClick)="selectMarker($event, marker, i)">
-      </agm-marker>
-    </agm-marker-cluster> -->
-  <!-- <agm-rectangle [north]="max('lat')" [east]="max('lng')" [south]="min('lat')" [west]="min('lng')">
-  </agm-rectangle> -->
-  <!-- </agm-map>
-  <p *ngIf="selectedMarker">
-    Lat: {{ selectedMarker.lat }} Lng: {{ selectedMarker.lng }}
-  </p> -->
-
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false"
     (mapClick)="addMarker($event)" [scrollwheel]="null">
 
